@@ -24,8 +24,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void getLoginData() async {
     logindata = await SharedPreferences.getInstance();
-    context.read<GetLoginDataBloc>().add(
-        GetUsernameEvent(data: logindata.getString('username').toString()));
+    executeBloc(logindata.getString('username').toString());
+  }
+
+  void executeBloc(String data) {
+    context.read<GetLoginDataBloc>().add(GetUsernameEvent(data: data));
   }
 
   @override

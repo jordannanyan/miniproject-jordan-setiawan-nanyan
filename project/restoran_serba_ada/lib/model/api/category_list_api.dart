@@ -12,7 +12,7 @@ class CategoryMealListAPI {
       final data = categoryMealListFromJson(json.encode(response.data));
       listMeals = data.meals;
     } catch (e) {
-      print(e);
+      throw (e);
     }
     return listMeals;
   }

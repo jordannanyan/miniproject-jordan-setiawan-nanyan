@@ -1,3 +1,5 @@
+// ignore_for_file: library_prefixes
+
 import 'package:flutter/material.dart';
 import 'package:restoran_serba_ada/model/search_model.dart';
 import 'package:restoran_serba_ada/model/category_list_model.dart'

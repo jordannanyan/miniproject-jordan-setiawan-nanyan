@@ -18,6 +18,12 @@ class _SearchScreenState extends State<SearchScreen> {
   TextEditingController searchTextController = TextEditingController();
 
   @override
+  void dispose() {
+    searchTextController.dispose();
+    super.dispose();
+  }
+
+  @override
   void initState() {
     context.read<SearchResultBloc>().add(EmptySearchResultEvent());
     super.initState();

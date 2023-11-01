@@ -91,7 +91,7 @@ class _DetailScreenState extends State<DetailScreen> {
           return Stack(
             children: [
               Image.network(
-                state.data[0].strMealThumb ?? '',
+                state.data.first.strMealThumb ?? '',
                 fit: BoxFit.cover,
                 width: double.infinity,
                 height: 300,

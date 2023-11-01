@@ -77,7 +77,7 @@ class ThemeTextStyle {
     fontWeight: FontWeight.w400,
     color: ThemeColor().grey,
   );
-  TextStyle textStyleSixth = TextStyle(
+  TextStyle textStyleSixth = const TextStyle(
     fontSize: 8,
     fontWeight: FontWeight.w600,
   );
