@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:restoran_serba_ada/screen/search_screen/bloc/search_result_bloc/search_result_bloc.dart';
 import 'package:restoran_serba_ada/screen/search_screen/search_sreen_widget/button_search_widget.dart';
-import 'package:restoran_serba_ada/screen/theme/theme_text.dart';
+import 'package:restoran_serba_ada/theme/theme_text.dart';
 import 'package:restoran_serba_ada/screen/widget/bottom_navigation_bar_widget.dart';
 import 'package:restoran_serba_ada/screen/search_screen/search_sreen_widget/search_result_widget.dart';
 import 'package:restoran_serba_ada/screen/widget/text_field_widget.dart';

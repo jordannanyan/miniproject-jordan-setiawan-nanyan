@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:restoran_serba_ada/screen/home_screen/bloc/get_ai_reommendation_bloc/get_ai_recommendation_bloc.dart';
-import 'package:restoran_serba_ada/screen/theme/theme_color.dart';
-import 'package:restoran_serba_ada/screen/theme/theme_text.dart';
+import 'package:restoran_serba_ada/theme/theme_color.dart';
+import 'package:restoran_serba_ada/theme/theme_text.dart';
 import 'package:restoran_serba_ada/screen/widget/text_field_widget.dart';
 
 class RekomendasiWidget extends StatelessWidget {

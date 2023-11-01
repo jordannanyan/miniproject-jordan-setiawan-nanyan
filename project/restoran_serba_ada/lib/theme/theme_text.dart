@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:restoran_serba_ada/screen/theme/theme_color.dart';
+import 'package:restoran_serba_ada/theme/theme_color.dart';
 
 class ThemeTextStyle {
   TextStyle labelLarge = const TextStyle(

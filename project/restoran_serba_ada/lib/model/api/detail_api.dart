@@ -11,9 +11,8 @@ class DetailAPI {
           .get('https://www.themealdb.com/api/json/v1/1/lookup.php?i=$idMeal');
       final data = searchDataFromJson(json.encode(response.data));
       listMeals = data.meals;
-      print('object');
     } catch (e) {
-      print(e);
+      throw (e);
     }
     return listMeals;
   }

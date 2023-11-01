@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:restoran_serba_ada/model/category_model.dart';
-import 'package:restoran_serba_ada/screen/theme/theme_color.dart';
-import 'package:restoran_serba_ada/screen/theme/theme_text.dart';
+import 'package:restoran_serba_ada/theme/theme_color.dart';
+import 'package:restoran_serba_ada/theme/theme_text.dart';
 
 class KategoriWidget extends StatelessWidget {
   final List<Meal> dataCategory;

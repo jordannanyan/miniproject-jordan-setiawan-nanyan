@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:restoran_serba_ada/screen/category_screen/bloc/get_category_meal_bloc/get_category_meal_bloc.dart';
 import 'package:restoran_serba_ada/screen/category_screen/category_screen_widget/category_result_widget.dart';
-import 'package:restoran_serba_ada/screen/theme/theme_text.dart';
+import 'package:restoran_serba_ada/theme/theme_text.dart';
 import 'package:restoran_serba_ada/screen/widget/bottom_navigation_bar_widget.dart';
 
 class CategoryScreen extends StatefulWidget {

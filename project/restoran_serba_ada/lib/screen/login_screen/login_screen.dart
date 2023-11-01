@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:restoran_serba_ada/screen/login_screen/bloc/get_login_data_bloc/get_login_data_bloc.dart';
-import 'package:restoran_serba_ada/screen/theme/theme_text.dart';
+import 'package:restoran_serba_ada/theme/theme_text.dart';
 import 'package:restoran_serba_ada/screen/widget/button_widget.dart';
 import 'package:restoran_serba_ada/screen/widget/text_field_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';

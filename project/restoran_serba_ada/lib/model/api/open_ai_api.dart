@@ -36,7 +36,7 @@ class DescriptionService {
       if (response.statusCode == 200) {
         gptData = gptDataFromJson(response.body);
       } else {
-        print(response.statusCode);
+        throw (response.statusCode);
       }
     } catch (e) {
       throw Exception('Request Gagal di Kirim');

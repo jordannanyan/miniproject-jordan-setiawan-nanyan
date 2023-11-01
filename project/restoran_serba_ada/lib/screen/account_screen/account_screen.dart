@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:restoran_serba_ada/screen/theme/theme_color.dart';
-import 'package:restoran_serba_ada/screen/theme/theme_text.dart';
+import 'package:restoran_serba_ada/theme/theme_color.dart';
+import 'package:restoran_serba_ada/theme/theme_text.dart';
 import 'package:restoran_serba_ada/screen/widget/appbar_widget.dart';
 import 'package:restoran_serba_ada/screen/widget/button_widget.dart';
 import 'package:restoran_serba_ada/screen/widget/text_field_widget.dart';

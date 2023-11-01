@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:restoran_serba_ada/model/helper/database_helper.dart';
 import 'package:restoran_serba_ada/model/history_model.dart';
 import 'package:restoran_serba_ada/model/wishlist_model.dart';
-import 'package:restoran_serba_ada/screen/theme/theme_text.dart';
+import 'package:restoran_serba_ada/theme/theme_text.dart';
 import 'package:restoran_serba_ada/screen/whislist_screen/bloc/get_database_bloc/get_database_bloc.dart';
 import 'package:restoran_serba_ada/screen/whislist_screen/wishlist_screen_widget/total_price_widget.dart';
 import 'package:restoran_serba_ada/screen/whislist_screen/wishlist_screen_widget/wishlist_listview_widget.dart';

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:restoran_serba_ada/screen/history_screen/history_screen_widget/history_button_widget.dart';
 import 'package:restoran_serba_ada/screen/history_screen/history_screen_widget/history_list_widget.dart';
-import 'package:restoran_serba_ada/screen/theme/theme_text.dart';
+import 'package:restoran_serba_ada/theme/theme_text.dart';
 import 'package:restoran_serba_ada/screen/history_screen/bloc/get_database_bloc/get_database_bloc.dart';
 import 'package:restoran_serba_ada/screen/widget/appbar_widget.dart';
 import 'package:restoran_serba_ada/screen/widget/bottom_navigation_bar_widget.dart';

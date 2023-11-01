@@ -8,8 +8,8 @@ import 'package:restoran_serba_ada/screen/detail_screen/bloc/update_total_cost_b
 import 'package:restoran_serba_ada/screen/detail_screen/bloc/update_wishlist_data_bloc/update_wishlist_data_bloc.dart';
 import 'package:restoran_serba_ada/screen/detail_screen/detail_screen_widget/detail_produk_widget.dart';
 import 'package:restoran_serba_ada/screen/detail_screen/detail_screen_widget/lokasi_restoran_widget.dart';
-import 'package:restoran_serba_ada/screen/theme/theme_color.dart';
-import 'package:restoran_serba_ada/screen/theme/theme_text.dart';
+import 'package:restoran_serba_ada/theme/theme_color.dart';
+import 'package:restoran_serba_ada/theme/theme_text.dart';
 import 'package:restoran_serba_ada/screen/whislist_screen/bloc/get_database_bloc/get_database_bloc.dart';
 import 'package:restoran_serba_ada/screen/widget/button_widget.dart';
 

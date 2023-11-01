@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:restoran_serba_ada/model/history_model.dart';
-import 'package:restoran_serba_ada/screen/theme/theme_color.dart';
-import 'package:restoran_serba_ada/screen/theme/theme_text.dart';
+import 'package:restoran_serba_ada/theme/theme_color.dart';
+import 'package:restoran_serba_ada/theme/theme_text.dart';
 
 class HistoryListWidget extends StatelessWidget {
   final List<HistoryModel> listData;

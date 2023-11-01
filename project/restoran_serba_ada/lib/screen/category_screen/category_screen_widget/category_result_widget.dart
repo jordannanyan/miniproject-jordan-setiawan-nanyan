@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:restoran_serba_ada/model/category_list_model.dart';
-import 'package:restoran_serba_ada/screen/theme/theme_text.dart';
+import 'package:restoran_serba_ada/theme/theme_text.dart';
 
 class CategoryResultWidget extends StatelessWidget {
   final List<Meal> categoryResult;

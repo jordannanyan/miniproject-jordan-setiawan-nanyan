@@ -8,7 +8,7 @@ import 'package:restoran_serba_ada/screen/home_screen/home_screen_widget/kategor
 import 'package:restoran_serba_ada/screen/home_screen/home_screen_widget/rekomendasi_widget.dart';
 import 'package:restoran_serba_ada/screen/home_screen/home_screen_widget/show_more_button_widget.dart';
 import 'package:restoran_serba_ada/screen/home_screen/home_screen_widget/welcome_widget.dart';
-import 'package:restoran_serba_ada/screen/theme/theme_text.dart';
+import 'package:restoran_serba_ada/theme/theme_text.dart';
 import 'package:restoran_serba_ada/screen/widget/bottom_navigation_bar_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
