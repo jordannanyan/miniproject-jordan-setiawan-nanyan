@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:restoran_serba_ada/screen/login_screen/bloc/get_login_data_bloc/get_login_data_bloc.dart';
 import 'package:restoran_serba_ada/screen/theme/theme_text.dart';
 import 'package:restoran_serba_ada/screen/widget/button_widget.dart';
 import 'package:restoran_serba_ada/screen/widget/text_field_widget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -11,8 +14,26 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController usernameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  final usernameController = TextEditingController();
+  final passwordController = TextEditingController();
+  late SharedPreferences logindata;
+
+  void getLoginData() async {
+    logindata = await SharedPreferences.getInstance();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getLoginData();
+  }
+
+  @override
+  void dispose() {
+    usernameController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,25 +67,41 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               TextFieldWidget(
                 hintText: "Username",
-                errorMessage: "Username Salah",
+                errorMessage: "",
                 dataController: usernameController,
+                onChange: (value) {
+                  BlocProvider.of<GetInputLoginDataBloc>(context)
+                      .add(GetUsernameEvent(data: value));
+                },
               ),
               const SizedBox(
                 height: 18,
               ),
               TextFieldWidget(
                 hintText: "Password",
-                errorMessage: "Password Salah",
+                errorMessage: "",
                 dataController: passwordController,
+                obscure: true,
+                onChange: (value) {
+                  BlocProvider.of<GetInputLoginDataBloc>(context)
+                      .add(GetPasswordEvent(data: value));
+                },
               ),
               const SizedBox(
                 height: 56,
               ),
               ButtonWidget(
                 textButton: "Log In",
-                route: '/home',
+                route: '',
                 onPressed: () {
-                  Navigator.of(context).pushNamed('/home');
+                  String username = usernameController.text;
+                  String password = passwordController.text;
+                  if (username.isNotEmpty && password.isNotEmpty) {
+                    logindata.setBool('login', false);
+                    logindata.setString('username', username);
+                    logindata.setString('password', password);
+                    Navigator.of(context).pushNamed('/home');
+                  }
                 },
               ),
             ],

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:restoran_serba_ada/model/search_model.dart';
+import 'package:restoran_serba_ada/model/category_list_model.dart'
+    as MealCategory;
 import 'package:restoran_serba_ada/screen/theme/theme_text.dart';
 
 class SearchResultWidget extends StatelessWidget {
@@ -20,7 +22,11 @@ class SearchResultWidget extends StatelessWidget {
           onTap: () {
             Navigator.of(context).popAndPushNamed(
               '/detail',
-              arguments: searchResult[index],
+              arguments: MealCategory.Meal(
+                idMeal: searchResult[index].idMeal ?? '',
+                strMeal: searchResult[index].strMeal ?? '',
+                strMealThumb: searchResult[index].strMealThumb ?? '',
+              ),
             );
           },
           child: Column(

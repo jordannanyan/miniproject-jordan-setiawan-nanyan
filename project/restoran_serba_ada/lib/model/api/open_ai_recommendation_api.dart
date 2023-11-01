@@ -3,8 +3,8 @@ import 'package:restoran_serba_ada/model/constants/open_ai.dart';
 import 'package:restoran_serba_ada/model/open_ai_model.dart';
 import 'package:http/http.dart' as http;
 
-class DescriptionService {
-  static Future<GptData> getDescription({
+class RecommendationService {
+  static Future<GptData> getRecommendation({
     required String menu,
   }) async {
     late GptData gptData = GptData(
@@ -24,7 +24,7 @@ class DescriptionService {
       };
 
       String promptData =
-          "You are a food expert. Please give me a detail food description for this food $menu, write it in 240 character and separated to 3 paragraph";
+          "You are a food expert. Please give me a recommendation for a food with this description, $menu, write it in 80 character";
 
       final data = jsonEncode({
         "model": "gpt-3.5-turbo-instruct",

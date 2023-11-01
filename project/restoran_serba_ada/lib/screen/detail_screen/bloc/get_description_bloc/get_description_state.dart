@@ -19,3 +19,5 @@ final class ValueMenuDescriptionState extends GetDescriptionState {
   @override
   List<Object> get props => [desc];
 }
+
+final class LoadingDataState extends GetDescriptionState {}

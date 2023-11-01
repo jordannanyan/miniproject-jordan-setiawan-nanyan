@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:restoran_serba_ada/screen/home_screen/bloc/category_bloc/category_bloc_bloc.dart';
+import 'package:restoran_serba_ada/screen/home_screen/bloc/get_ai_reommendation_bloc/get_ai_recommendation_bloc.dart';
+import 'package:restoran_serba_ada/screen/home_screen/bloc/get_login_data_bloc/get_login_data_bloc.dart';
 import 'package:restoran_serba_ada/screen/home_screen/bloc/indicator_show_data_bloc/indicator_show_data_bloc.dart';
 import 'package:restoran_serba_ada/screen/home_screen/home_screen_widget/kategori_widget.dart';
 import 'package:restoran_serba_ada/screen/home_screen/home_screen_widget/rekomendasi_widget.dart';
@@ -8,6 +10,7 @@ import 'package:restoran_serba_ada/screen/home_screen/home_screen_widget/show_mo
 import 'package:restoran_serba_ada/screen/home_screen/home_screen_widget/welcome_widget.dart';
 import 'package:restoran_serba_ada/screen/theme/theme_text.dart';
 import 'package:restoran_serba_ada/screen/widget/bottom_navigation_bar_widget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -17,13 +20,22 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late SharedPreferences logindata;
+
+  void getLoginData() async {
+    logindata = await SharedPreferences.getInstance();
+    context.read<GetLoginDataBloc>().add(
+        GetUsernameEvent(data: logindata.getString('username').toString()));
+  }
+
   @override
   void initState() {
-    super.initState();
-    context.read<CategoryBloc>().add(GetCategoryEvent());
+    getLoginData();
     context
         .read<IndicatorShowDataBloc>()
         .add(const ChangeIndicatorShowDataEvent(data: false));
+    context.read<CategoryBloc>().add(GetCategoryEvent());
+    super.initState();
   }
 
   @override
@@ -39,9 +51,29 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(
-                height: 10,
+                height: 34,
               ),
-              const WelcomeWidget(),
+              BlocBuilder<GetLoginDataBloc, GetLoginDataState>(
+                builder: (context, state) {
+                  if (state is ValueUsernameState) {
+                    String username = state.dataUsername;
+                    String sentence = 'Hello, $username';
+                    return WelcomeWidget(
+                      name: sentence,
+                      onTap: () {
+                        logindata.setBool('login', true);
+                        logindata.remove('username');
+                        logindata.remove('password');
+                        Navigator.of(context).popAndPushNamed('/');
+                      },
+                    );
+                  } else {
+                    return const WelcomeWidget(
+                      name: 'Hello, User',
+                    );
+                  }
+                },
+              ),
               const SizedBox(
                 height: 16,
               ),
@@ -113,10 +145,27 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 28,
               ),
               Text(
-                'Your Recommendation',
+                'Ask AI Recommendation',
                 style: ThemeTextStyle().textStyleSecond,
               ),
-              const RekomendasiWidget(),
+              BlocBuilder<GetAiRecommendationBloc, GetAiRecommendationState>(
+                builder: (context, state) {
+                  if (state is ValueAIRecommendationState) {
+                    return RekomendasiWidget(
+                      recommendation: state.data.choices[0].text,
+                    );
+                  } else if (state is LoadingRecommendationState) {
+                    return const Padding(
+                      padding: EdgeInsets.all(16.0),
+                      child: Center(child: CircularProgressIndicator()),
+                    );
+                  } else {
+                    return const RekomendasiWidget(
+                      recommendation: 'No Data Still',
+                    );
+                  }
+                },
+              ),
             ],
           ),
         ),

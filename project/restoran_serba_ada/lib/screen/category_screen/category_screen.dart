@@ -2,28 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:restoran_serba_ada/screen/category_screen/bloc/get_category_meal_bloc/get_category_meal_bloc.dart';
 import 'package:restoran_serba_ada/screen/category_screen/category_screen_widget/category_result_widget.dart';
-import 'package:restoran_serba_ada/screen/search_screen/bloc/search_result_bloc/search_result_bloc.dart';
 import 'package:restoran_serba_ada/screen/theme/theme_text.dart';
 import 'package:restoran_serba_ada/screen/widget/bottom_navigation_bar_widget.dart';
 
-class SearchScreen extends StatefulWidget {
-  const SearchScreen({super.key});
+class CategoryScreen extends StatefulWidget {
+  const CategoryScreen({super.key});
 
   @override
-  State<SearchScreen> createState() => _SearchScreenState();
+  State<CategoryScreen> createState() => _CategoryScreenState();
 }
 
-class _SearchScreenState extends State<SearchScreen> {
+class _CategoryScreenState extends State<CategoryScreen> {
   TextEditingController searchTextController = TextEditingController();
 
   @override
-  void initState() {
-    context.read<SearchResultBloc>().add(EmptySearchResultEvent());
-    super.initState();
+  void didChangeDependencies() {
+    final categoryName = ModalRoute.of(context)?.settings.arguments as String;
+    context.read<GetCategoryMealBloc>().add(
+          GetCategoryDataEvent(
+            category: categoryName,
+          ),
+        );
+    super.didChangeDependencies();
   }
 
   @override
   Widget build(BuildContext context) {
+    final categoryName = ModalRoute.of(context)?.settings.arguments as String;
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -45,17 +50,15 @@ class _SearchScreenState extends State<SearchScreen> {
                   if (state is ValueCategoryMealDataState) {
                     return CategoryResultWidget(
                       categoryResult: state.data,
-                      categoryName: '',
+                      categoryName: categoryName,
                     );
-                  } else if (state is LoadingSearchResultState) {
+                  } else if (state is LoadingCategoryResultState) {
                     return const Padding(
                       padding: EdgeInsets.all(
                         56.0,
                       ),
                       child: Center(child: CircularProgressIndicator()),
                     );
-                  } else if (state is EmptySearchResultState) {
-                    return const SizedBox();
                   } else {
                     return const SizedBox();
                   }

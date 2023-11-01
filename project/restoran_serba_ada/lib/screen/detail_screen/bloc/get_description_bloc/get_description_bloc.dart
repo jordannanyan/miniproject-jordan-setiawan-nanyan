@@ -19,6 +19,7 @@ class GetDescriptionBloc
   Future<void> getMenuDescription(GetMenuDescriptionAPIEvent event,
       Emitter<GetDescriptionState> emit) async {
     String menu = event.menu;
+    emit(LoadingDataState());
     final GptData data = await DescriptionService.getDescription(
       menu: menu,
     );

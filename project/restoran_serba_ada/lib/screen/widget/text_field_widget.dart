@@ -7,19 +7,21 @@ class TextFieldWidget extends StatelessWidget {
   final IconButton? prefixIcon;
   final TextEditingController dataController;
   final Function(String)? onChange;
-  const TextFieldWidget({
-    super.key,
-    required this.hintText,
-    required this.errorMessage,
-    this.prefixIcon,
-    required this.dataController,
-    this.onChange,
-  });
+  final bool? obscure;
+  const TextFieldWidget(
+      {super.key,
+      required this.hintText,
+      required this.errorMessage,
+      this.prefixIcon,
+      required this.dataController,
+      this.onChange,
+      this.obscure});
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: dataController,
+      obscureText: obscure ?? false,
       decoration: InputDecoration(
         hintText: hintText,
         filled: true,

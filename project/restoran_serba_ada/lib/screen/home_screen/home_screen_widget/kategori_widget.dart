@@ -24,19 +24,27 @@ class KategoriWidget extends StatelessWidget {
       ),
       itemCount: (showMore) ? dataCategory.length : 8,
       itemBuilder: ((context, index) {
-        return Container(
-          decoration: BoxDecoration(
-              border: Border.all(
-                color: ThemeColor().grey,
+        return GestureDetector(
+          onTap: () {
+            Navigator.of(context).pushNamed(
+              '/category',
+              arguments: dataCategory[index].strCategory,
+            );
+          },
+          child: Container(
+            decoration: BoxDecoration(
+                border: Border.all(
+                  color: ThemeColor().grey,
+                ),
+                borderRadius: BorderRadius.circular(100),
+                color: ThemeColor().lightRed),
+            height: 70,
+            child: Align(
+              alignment: Alignment.center,
+              child: Text(
+                dataCategory[index].strCategory,
+                style: ThemeTextStyle().textStyleSixth,
               ),
-              borderRadius: BorderRadius.circular(100),
-              color: ThemeColor().lightRed),
-          height: 70,
-          child: Align(
-            alignment: Alignment.center,
-            child: Text(
-              dataCategory[index].strCategory,
-              style: ThemeTextStyle().textStyleSixth,
             ),
           ),
         );

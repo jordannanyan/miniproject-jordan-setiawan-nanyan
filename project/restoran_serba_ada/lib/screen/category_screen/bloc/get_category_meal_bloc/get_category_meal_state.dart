@@ -19,3 +19,5 @@ final class ValueCategoryMealDataState extends GetCategoryMealState {
   @override
   List<Object> get props => [data];
 }
+
+final class LoadingCategoryResultState extends GetCategoryMealState {}

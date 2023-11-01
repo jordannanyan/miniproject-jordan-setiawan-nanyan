@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:restoran_serba_ada/screen/theme/theme_text.dart';
 
 class TotalPriceWidget extends StatelessWidget {
-  final String price;
+  final int price;
   const TotalPriceWidget({super.key, required this.price});
 
   @override
@@ -15,7 +15,7 @@ class TotalPriceWidget extends StatelessWidget {
           style: ThemeTextStyle().textStyleForthBold,
         ),
         Text(
-          '50.000',
+          price.toString(),
           style: ThemeTextStyle().textStyleForthBold,
         ),
       ],

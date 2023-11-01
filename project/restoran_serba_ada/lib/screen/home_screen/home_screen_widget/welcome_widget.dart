@@ -3,7 +3,9 @@ import 'package:restoran_serba_ada/screen/theme/theme_color.dart';
 import 'package:restoran_serba_ada/screen/theme/theme_text.dart';
 
 class WelcomeWidget extends StatelessWidget {
-  const WelcomeWidget({super.key});
+  final String name;
+  final Function()? onTap;
+  const WelcomeWidget({super.key, required this.name, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,7 @@ class WelcomeWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Hello, User',
+              name,
               style: ThemeTextStyle().textStyleFirstBold,
             ),
             const SizedBox(
@@ -28,12 +30,10 @@ class WelcomeWidget extends StatelessWidget {
         ),
         GestureDetector(
           child: Icon(
-            Icons.person,
+            Icons.logout,
             color: ThemeColor().lightRed,
           ),
-          onTap: () {
-            Navigator.of(context).pushNamed('/account');
-          },
+          onTap: onTap,
         ),
       ],
     );

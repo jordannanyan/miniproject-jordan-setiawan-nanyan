@@ -70,7 +70,29 @@ class _WishlistScreenState extends State<WishlistScreen> {
             const SizedBox(
               height: 14,
             ),
-            const TotalPriceWidget(price: '50000'),
+            BlocBuilder<GetDatabaseBloc, GetDatabaseState>(
+              builder: (context, state) {
+                int totalPrice;
+                if (state is ValueAllWishlistState) {
+                  totalPrice = state.wishlistModel.fold(0, (total, element) {
+                    return total + element.harga;
+                  });
+                  return TotalPriceWidget(price: totalPrice);
+                } else if (state is ValueUpdateWishlistState) {
+                  totalPrice = state.wishlistModel.fold(0, (total, element) {
+                    return total + element.harga;
+                  });
+                  return TotalPriceWidget(price: totalPrice);
+                } else if (state is ValueDeleteWishlistState) {
+                  totalPrice = state.wishlistModel.fold(0, (total, element) {
+                    return total + element.harga;
+                  });
+                  return TotalPriceWidget(price: totalPrice);
+                } else {
+                  return const Center(child: TotalPriceWidget(price: 0));
+                }
+              },
+            ),
             const SizedBox(
               height: 8,
             ),

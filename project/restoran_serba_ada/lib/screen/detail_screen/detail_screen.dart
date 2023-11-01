@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:restoran_serba_ada/model/search_model.dart';
+import 'package:restoran_serba_ada/model/category_list_model.dart';
 import 'package:restoran_serba_ada/model/wishlist_model.dart';
 import 'package:restoran_serba_ada/screen/detail_screen/bloc/get_description_bloc/get_description_bloc.dart';
 import 'package:restoran_serba_ada/screen/detail_screen/bloc/get_detail_bloc/get_detail_bloc.dart';
@@ -73,12 +73,12 @@ class _DetailScreenState extends State<DetailScreen> {
     // Call the API here
     context.read<GetDetailBloc>().add(
           GetDetailAPIEvent(
-            id: idData.idMeal ?? '',
+            id: idData.idMeal,
           ),
         );
     context
         .read<GetDescriptionBloc>()
-        .add(GetMenuDescriptionAPIEvent(menu: idData.strMeal ?? ''));
+        .add(GetMenuDescriptionAPIEvent(menu: idData.strMeal));
   }
 
   @override
@@ -205,7 +205,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                 height: 20,
                               ),
                               Text(
-                                'Menu Description',
+                                'AI Generated Description',
                                 style: ThemeTextStyle().textStyleForthBold,
                               ),
                               BlocBuilder<GetDescriptionBloc,
@@ -215,6 +215,13 @@ class _DetailScreenState extends State<DetailScreen> {
                                     return Text(
                                       descState.desc.choices[0].text,
                                       style: ThemeTextStyle().textStyleFifth,
+                                    );
+                                  } else if (descState is LoadingDataState) {
+                                    return const Center(
+                                      child: Padding(
+                                        padding: EdgeInsets.all(8),
+                                        child: CircularProgressIndicator(),
+                                      ),
                                     );
                                   } else {
                                     return const SizedBox();
@@ -319,6 +326,8 @@ class _DetailScreenState extends State<DetailScreen> {
                                 ),
                               );
                               Navigator.of(context).pushNamed('/wishlist');
+                              jumlah = 1;
+                              harga = 50000;
                             },
                           );
                         }

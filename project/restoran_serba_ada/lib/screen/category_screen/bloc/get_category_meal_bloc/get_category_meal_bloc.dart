@@ -16,6 +16,7 @@ class GetCategoryMealBloc
   Future<void> getCategoryMeal(
       GetCategoryDataEvent event, Emitter<GetCategoryMealState> emit) async {
     String data = event.category;
+    emit(LoadingCategoryResultState());
     List<Meal> listData = await CategoryMealListAPI.getCategoryMealData(data);
     emit(ValueCategoryMealDataState(data: listData));
   }
